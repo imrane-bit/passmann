@@ -3,7 +3,7 @@
 
  - [General](#General) 
  - [Features](#Features) 
- - [Coming Features](#Coming_Features) 
+ - [Coming Features](#ComingFeatures) 
  - [For more](#For more) 
  - [comtact me](#comtact me) 
 
