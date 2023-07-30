@@ -167,7 +167,7 @@ def addaccount():
 def randompassworddd():
     while True :
         try :
-            len = int(input("Enter the lenght of the password you want :"))
+            len = int(input("Enter the lenght of the password you want(14 at least) :"))
             pasword = randompassword.generate_password(len)
             os.system('clear')
             print(f"\n\nthe password : {pasword}\n\n")
