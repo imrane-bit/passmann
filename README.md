@@ -11,11 +11,13 @@
 - #### note : the accounts are indexed , each accounts have a specific number
 - #### encrypting , decrypting manually
 - the tool gives you the ablity to decrypt and encrypt your passwords file manually ,but be carefull , encrypting the file two times will cause the old key to be overwrriten , wich means you cannot restore your accounts . dont do that manually unless you know what are you doing .
-- #### 4.command line arguments 
+- #### 4.showing specific account
+- by entering the nember that a accounts is indexed with . you can veiw that specfic account .
+- #### 5.command line arguments 
 - in case of the  user giving a command line argument like that "python3 pssmann.py keyword" , it will automaticaty search for the keyword given in the passwords file nd show all the accounts containing this keyword as platform,email,username,password .
-- ### 5. searching 
+- ### 6. searching 
 - the program provides the ability to search for a specfic keyword(email,pass,user,platform), same as before in commandline args , it will automaticaty search for the keyword given in the passwords file nd show all the accounts containing this keyword as platform,email,username,password .
-- ### 6. generating strong passwords
+- ### 7. generating strong passwords
 - the tool provides a function that generates strong passwords , with the option of chosing the password-lenght
 - ## for more 
 - read the docummention in the scripts for more detailed stuff
