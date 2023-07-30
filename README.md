@@ -1,4 +1,13 @@
 # passmann
+
+
+ - [General](#General) 
+ - [Features](#Features) 
+ - [Coming Features](#Coming Features) 
+ - [For more](#For more) 
+ - [comtact me](#comtact me) 
+
+
  - ## general
 - a terminal based password manager that stores all your password encrypted in your device,  encrypted with a key in your usb , it requires moving the key file to some usb or any external storage ,and editing the key file location in the script in order to work .
 - ## Features
@@ -19,14 +28,14 @@
 - the program provides the ability to search for a specfic keyword(email,pass,user,platform), same as before in commandline args , it will automaticaty search for the keyword given in the passwords file nd show all the accounts containing this keyword as platform,email,username,password .
 - ### 7. generating strong passwords
 - the tool provides a function that generates strong passwords , with the option of chosing the password-lenght
-- ## coming features
+- ## Coming Features
 - backup feature
 - the folder with the accounts in it will  become hidden
 - use of pgp keys
 - more encryption 
 - better design 
 - ability to get an acount info by puting its index as command-line-argument
-- ## for more 
+- ## For more 
 - read the docummention in the scripts for more detailed stuff
 - ## comtact me 
 - if you have any concerns , please contact me at my email (i check it daily):
