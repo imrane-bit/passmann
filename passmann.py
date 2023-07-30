@@ -72,9 +72,9 @@ def encryptwh():
     try :
     
         encrypted = encrypt.encrypt_file("white house.csv")
-        '''src_path = r"key.key"
+        src_path = r"key.key"
         dst_path = r"path/to/your/external/storage"
-        shutil.move(src_path, dst_path)'''
+        shutil.move(src_path, dst_path)
 
 
     except Exception as e :
