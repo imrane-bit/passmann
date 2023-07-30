@@ -24,7 +24,8 @@
 - the folder with the accounts in it will  become hidden
 - use of pgp keys
 - more encryption 
-- better desigh
+- better design 
+- ability to get an acount info bu puting its index as command-line-argument
 - ## for more 
 - read the docummention in the scripts for more detailed stuff
 - ## comtact me 
