@@ -3,9 +3,9 @@
 
  - [General](#General) 
  - [Features](#Features) 
- - [Coming Features](#ComingFeatures) 
- - [For more](#For more) 
- - [comtact me](#comtact me) 
+ - [Coming Features](#Coming-Features) 
+ - [For more](#For-more) 
+ - [comtact me](#comtact-me) 
 
 
  - ## general
