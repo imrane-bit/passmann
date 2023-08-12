@@ -35,6 +35,7 @@
 - more encryption 
 - better design 
 - ability to get an acount info by puting its index as command-line-argument
+- automatic password copy
 - ## For more 
 - read the docummention in the scripts for more detailed stuff
 - ## comtact me 
