@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import encrypt
 import decrypt
 import randompassword
@@ -28,14 +29,23 @@ import sys
 #this functions stands for searching by comparing the arg with all the acounts information 
 #so the user can search by username, password,platform and also email
 #it will be user after to display the acounts of a specific platform (or with a pass or user etc) if given as a command line argument
+
+
+
+#path to white house file
+path1 = "/home/YOUR_USER/.passmann/white house.csv"
+#path to key
+path2 = "/run/media/YOURUSER/YOURUSBNAME/passmannkey/key.key"
+#path to the key folder
+path3 = "/run/media/YOURUSER/YOURUSBNAME//passmannkey"
 def searchfunc(searchkeyword):
     decryptwh()
 
-    with open("white house.csv","r+") as File :
+    with open(path1,"r+") as File :
         reader = csv.reader(File)    
         i = 0
         for row in reader :
-            if searchkeyword.upper() == row[0].upper()  or searchkeyword.upper() == row[1].upper() or searchkeyword.upper() == row[3].upper() or searchkeyword.upper() == row[2].upper():
+            if searchkeyword.upper() in row[0].upper()  or searchkeyword.upper() in row[1].upper() or searchkeyword.upper() in row[3].upper() or searchkeyword.upper() in row[2].upper():
                 print("-----------------------------------------------------------------------\n ")
                 print(f"{i})  platform   : {row[0]} \n     username   : {row[1]} \n     email      : {row[3]} \n     password   : {row[2]} \n \n")
                 print("-----------------------------------------------------------------------\n ")
@@ -51,13 +61,13 @@ def searchfunc(searchkeyword):
 
 
 
-#replace  the destinations
+
 
 def decryptwh():
     try : 
         
-        decrypted = decrypt.decrypt_file( "white house.csv",'path/to/external/storage/key.key')
-        os.remove("'path/to/external/storage/key.key'")
+        decrypted = decrypt.decrypt_file( path1, path2)
+        os.remove(path2)
     except Exception as e:
         print(e)
         return
@@ -71,9 +81,9 @@ def decryptwh():
 def encryptwh():
     try :
     
-        encrypted = encrypt.encrypt_file("white house.csv")
+        encrypted = encrypt.encrypt_file(path1)
         src_path = r"key.key"
-        dst_path = r"path/to/your/external/storage"
+        dst_path = path3
         shutil.move(src_path, dst_path)
 
 
@@ -99,7 +109,9 @@ def userpanel():
         print("7.  decrypt the passwords file")
         print("8.  encrypt the passwords file")
         print("9.  search for accounts using keyword")
-        print("10. exit ")
+        print("10. make backup ")
+        print("11. restore backup ")
+        print("12. close")
         try:
             choice = int(input("Enter a number :"))
         except ValueError as ver:
@@ -134,12 +146,48 @@ def userpanel():
             keyword = input( "enter the search keyword : ")
             os.system('clear')
             searchfunc(keyword)            
-        elif choice == 10:
+        elif choice == 10 :
+            makebackup()
+        elif choice == 11 :
+            getbackup()
+        elif choice == 12:
             os.system('clear')
             break
         else:
             print("Wrong choice")
             continue
+
+
+
+#this will be a function to make backups 
+def makebackup():
+    with open(path1 , "r") as original , open("/home/imranebit/.passmann/.backup/white house.csv" , 'w') as backup :
+         origreader = csv.reader(original)
+         backwriter = csv.writer(backup)
+         backwriter.writerows(origreader)
+         original.close()
+         backup.close()
+
+    with open("/run/media/imranebit/Ventoy/passmannkey/key.key" , "r") as original , open("/run/media/imranebit/Ventoy/passmannkey/.backup/key.key" , 'w') as backup :
+         origreader = original.read()
+         backup.write(origreader)
+         original.close()
+         backup.close()
+
+#this function is responsible of recovering backups
+def getbackup():
+    with open(path1 , "w") as original , open("/home/imranebit/.passmann/.backup/white house.csv" , 'r') as backup :
+         backupreader = csv.reader(backup)
+         origwriter = csv.writer(original)
+         origwriter.writerows(backupreader)
+         original.close()
+         backup.close()
+
+    with open("/run/media/imranebit/Ventoy/passmannkey/key.key" , "w") as original , open("/run/media/imranebit/Ventoy/passmannkey/.backup/key.key" , 'r') as backup :
+         backupreader = backup.read()
+         original.write(backupreader)
+         original.close()
+         backup.close()
 
 
 
@@ -154,7 +202,7 @@ def addaccount():
     data = [platform , username, password,email]
     #adding the account
     decryptwh()
-    with open("white house.csv","a") as decfile :
+    with open(path1,"a") as decfile :
         writer = csv.writer(decfile)
         writer.writerow(data)
     os.system('clear')
@@ -167,7 +215,7 @@ def addaccount():
 def randompassworddd():
     while True :
         try :
-            len = int(input("Enter the lenght of the password you want(14 at least) :"))
+            len = int(input("Enter the lenght of the password you want :"))
             pasword = randompassword.generate_password(len)
             os.system('clear')
             print(f"\n\nthe password : {pasword}\n\n")
@@ -184,7 +232,7 @@ def seeaccounts():
     decryptwh()
     
  #printing the accounts with unique numbers so the user can edit/delete them later by specifiying the number   
-    with open("white house.csv", "r") as decryptedf :
+    with open(path1, "r") as decryptedf :
         csv.reader(decryptedf)
         reader = csv.reader(decryptedf)
 
@@ -203,7 +251,7 @@ def seeaccount():
     choice = int(input("enter the account number: "))
     decryptwh()
 
-    with open("white house.csv","r+") as File :
+    with open(path1,"r+") as File :
         reader = csv.reader(File)    
         i = 0
         for row in reader :
@@ -231,7 +279,7 @@ def  deleteacc():
 
             
             #creating a temporary file
-            with open("white house.csv","r+") as inp, open("temp.csv" , "w") as out:
+            with open(path1,"r+") as inp, open("temp.csv" , "w") as out:
                 inreader = csv.reader(inp)
                 outwriter = csv.writer(out)
                 i = 0
@@ -247,7 +295,7 @@ def  deleteacc():
             out.close()
 
             #writing the temp file contents in original file (we delted the wanted row previously while appendind to the temp file)
-            with open("white house.csv","w") as inp, open("temp.csv" , "r") as out:
+            with open(path1,"w") as inp, open("temp.csv" , "r") as out:
                 outreader = csv.reader(out)
                 inwriter = csv.writer(inp)
             
@@ -274,9 +322,8 @@ def modifyacc() :
             seeaccounts()
             choice = int(input("write the number of the account you want to update :"))
             decryptwh()
-
-
-            with open("white house.csv","r+") as inp, open("temp.csv" , "w") as out:
+    
+            with open(path1,"r+") as inp, open("temp.csv" , "w") as out:
                 inreader = csv.reader(inp)
                 outwriter = csv.writer(out)
                 i = 0
@@ -287,24 +334,25 @@ def modifyacc() :
                         if choicetwo == 1 :
                             data = [row[0],input("write the new username :"),row[2],row[3]]
                             outwriter.writerow(data)
+                            i += 1
                         elif choicetwo == 2 :
                             data = [row[0],row[1],row[2],input("write the new email :")]
                             outwriter.writerow(data)
-                        elif choicetwo == 2 :
+                            i += 1
+                        elif choicetwo == 3 :
                             data = [row[0],row[1],input("write the new password :"),row[3]]
                             outwriter.writerow(data)
-                    else :
+                            i += 1
+                    else:
                         outwriter.writerow(row)
-                        
-                    i += 1
+                        i += 1
             inp.close()
             out.close()
-
-
-            with open("white house.csv","w") as inp, open("temp.csv" , "r") as out:
+    
+            with open(path1,"w") as inp, open("temp.csv" , "r") as out:
                 outreader = csv.reader(out)
                 inwriter = csv.writer(inp)
-            
+                
                 inwriter.writerows(outreader)
                 inp.close()
                 out.close()
@@ -319,11 +367,11 @@ def modifyacc() :
         
 #checking if the file exists or we should create it and encrypt it (happens in the first time only)
 try :
-    with open ("white house.csv", "r") as f:
+    with open (path1, "r") as f:
         f.readlines()
         f.close()
 except Exception as e:
-    with open ("white house.csv", "w") as f:
+    with open (path1, "w") as f:
         f.close()
     encryptwh()
 
