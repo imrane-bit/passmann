@@ -11,7 +11,7 @@
  - ## general
 - a terminal based password manager that stores all your password encrypted in your device,  encrypted with a key in your usb , it requires moving the key file to some usb or any external storage ,and editing the key file location in the script in order to work .
 - ## Features
-- ### 1. full encryption
+- ### 1. passwords encryption
 - the files where the accounts are stored are completely encrypted , and cannot be seen unless the usb with the key is pluged in , but be carefull , DO NOT delete the whitehouse.csv from the  device or key.key file from the usb , the passes in this case are lost permanently.
 -  the encryption key changes many time eveytime you run the programm for more protection.
 - ### 2. basic features
@@ -29,13 +29,12 @@
 - ### 7. generating strong passwords
 - the tool provides a function that generates strong passwords , with the option of chosing the password-lenght
 - ## Coming Features
-- backup feature
-- the folder with the accounts in it will  become hidden
+- ~~backup feature~~ ; **Done**
+- ~~the folder with the accounts in it will  become hidden~~ ; **Done**
 - use of pgp keys
-- more encryption 
+- more secure encryption 
 - better design 
 - ability to get an acount info by puting its index as command-line-argument
-- automatic password copy
 - ## For more 
 - read the docummention in the scripts for more detailed stuff
 - ## comtact me 
