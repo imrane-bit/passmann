@@ -35,6 +35,7 @@
 - more secure encryption 
 - better design 
 - ability to get an acount info by puting its index as command-line-argument
+- install.sh file that sets up all the stuff
 - ## For more 
 - read the docummention in the scripts for more detailed stuff
 - ## comtact me 
