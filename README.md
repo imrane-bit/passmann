@@ -9,7 +9,7 @@
 
 
  - ## general
-- a terminal based password manager that stores all your password encrypted in your device,  encrypted with a key in your usb , it requires moving the key file to some usb or any external storage ,and editing the key file location in the script in order to work .
+- a terminal based password manager that stores all your password encrypted in your device,  encrypted with a key in your usb , it requires editing the key file location in the script in order to work .
 - ## Features
 - ### 1. passwords encryption
 - the files where the accounts are stored are completely encrypted , and cannot be seen unless the usb with the key is pluged in , but be carefull , DO NOT delete the whitehouse.csv from the  device or key.key file from the usb , the passes in this case are lost permanently.
