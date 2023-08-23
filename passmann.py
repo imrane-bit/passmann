@@ -33,7 +33,7 @@ import sys
 
 
 #path to white house file
-path1 = "/home/YOUR_USER/.passmann/white house.csv"
+path1 = "$HOME/.passmann/white house.csv"
 #path to key
 path2 = "/run/media/YOURUSER/YOURUSBNAME/passmannkey/key.key"
 #path to the key folder
